@@ -1,0 +1,51 @@
+{{define "registration_form"}}
+<div id="registration" class="hide">
+    <link rel="stylesheet" href="/assets/css/registrationFormStyle.css">
+    <form id="forma" action="/successfulRegistration" method="post" name="registrationForm">
+        <div id="close_window_but" onclick="Close_registration_form()">&#10006;</div>
+        <span id="registration_title_program"> пусто </span> <input type="number" id="id" name="program_id" style="display: none;">
+        <div class="user-box" style="margin-top: 30px;">
+            <input type="text" name="surname" required="">
+            <label>Фамилия</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="name" required="">
+            <label>Имя</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="patronymic" required="">
+            <label>Отчество</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="birth_date" onfocus="(this.type='date')" onblur="(this.type='text')" required="">
+            <label>Дата рождения</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="snils" required="">
+            <label>Снилс</label>
+        </div>
+        <div class="user-box">
+            <input type="email" name="email" required="">
+            <label>Электронная почта</label>
+        </div>
+        <div class="user-box">
+            <input type="tel" name="telephone" pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" required="">
+            <label>Телефон</label>
+        </div>
+        <div>
+            <label>Образование</label>
+            <select name="education">
+                    <option>Дошкольное образование</option>
+                    <option>Начальное общее образование</option>
+                    <option>Основное общее образование</option>
+                    <option>Среднее общее образование</option>
+                    <option>Среднее профессиональное образование</option>
+                    <option>Высшее образование</option>
+            </select>
+        </div>
+        <input type="submit" id="registration_but" value="Записаться">
+    </form>
+    <script src="/assets/js/registrationFormScript.js"></script>
+</div>
+
+{{end}}

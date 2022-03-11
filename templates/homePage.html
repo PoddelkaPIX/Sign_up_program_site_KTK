@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="/assets/css/homePageStyle.css">
+</head>
+
+<body>
+    {{template "header" .}} {{template "registration_form"}} {{template "footer"}}
+
+    <div id="filter" style="margin-right: 30px; margin-left: 60px; margin-bottom: 100px;">
+        <div style="display: flex; margin: 10px; position: absolute;">
+            <div style="font-size: 20px; margin-right: 10px;">Фильтры:</div>
+            <div class="filter_selector">
+                <div>Уровень программы:</div>
+                <div class="select_filter" id="level">Уровень не выбран</div>
+                <div class="drop_down_items hide">
+                    {{range $i := .Setting.Program_level_list}}
+                        <div class="level_filter_option option">
+                            {{$i.Program_level}}
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+            <div class="filter_selector">
+                <div>Вид программы: </div>
+                <div class="select_filter" id="type" >Вид не выбран</div>
+                <div class="drop_down_items hide">
+                    {{range $i := .Setting.Type_program_list}}
+                        <div class="type_filter_option option">
+                             {{$i.Type_program}}
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+            <div class="filter_selector">
+                <div>Форма обучения: </div>
+                <div class="select_filter" id="form"> Форма не выбрана</div>
+                <div class="drop_down_items hide">
+                    <div class="form_filter_option option">
+                        Не важно
+                    </div>
+                    <div class="form_filter_option option">
+                        Очная
+                    </div>
+                    <div class="form_filter_option option">
+                        Дистанционная
+                    </div>
+                </div>
+            </div>
+            <div class="filter_selector">
+                <div>Место реализации: </div>
+                <div class="select_filter"  id="place">Место не выбрано</div>
+                <div class="drop_down_items hide">
+                    <div class="place_filter_option option">
+                        Не важно
+                    </div>
+                    {{range $i := .Setting.Place_list}}
+                        <div class="place_filter_option option">
+                            {{$i.Place}}
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 style="margin-left: 10%;">Программы</h1>
+    {{range $i := .Programs}}
+    <div id={{$i.Id}} class="DPO">
+        <table class="table_professions">
+            <tr>
+                <th class="heading" style="width: 12%;">Уровень программы</th>
+                <th class="heading" style="width: 15%;">Вид программы</th>
+                <th class="heading" style="width: 15%;">Наименование программы </th>
+                <th class="heading" style="width: 13%;">Форма обучения</th>
+                <th class="heading" style="width: 13%;">Объем программы</th>
+                <th class="heading" style="width: 7%;">Стоимость</th>
+                <th class="heading" style="width: 20%;">Место реализации</th>
+            </tr>
+            <tr>
+                <td>
+                    {{ $i.Program_level }}
+                </td>
+                <td>
+                    {{ $i.Type_program}}
+                </td>
+                <td>
+                    {{ $i.Title}}
+                </td>
+                <td>
+                    Очная, дистанционная
+                </td>
+                <td>
+                    {{ $i.Size_program}} ({{ $i.Length}})
+                </td>
+                <td>
+                    {{$i.Price}}
+                </td>
+                <td>
+                    {{ $i.Place}}
+                </td>
+            </tr>
+        </table>
+        <div id="buttons_grup">
+            <a href="/passport/{{$i.Id}}" id="detailed_but">Подробнее</a>
+            <input type="button" class="subscribe_but" onclick="Show_registration_form('{{ $i.Title}}', '{{$i.Id}}')" value="Записаться">
+        </div>
+    </div>
+    {{end}}
+    <script src="/assets/js/homePageScript.js"></script>
+</body>
+
+</html>

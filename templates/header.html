@@ -1,0 +1,35 @@
+{{define "header"}}
+<header>
+    <link rel="stylesheet" href="/assets/css/headerStyle.css">
+    <div class="header">
+        <a href="/" id="logo">
+            <img src="/assets/images/logo.png" width="97" height="52">
+        </a>
+
+        <div id="menu_button" onclick="show_menu()">
+            <div class="menu_button_stick"></div>
+            <div class="menu_button_stick"></div>
+            <div class="menu_button_stick"></div>
+        </div>
+    </div>
+    <div class="box_menu hide">
+        <span id="show_status">Вы {status}</span>
+        <hr>
+        <div id="admin_panel">
+            <a href="/control_panel">Панель управления</a><br>
+        </div>
+        <div id="authorization">
+            <div class="registration_form">
+                <label>Логин</label>
+                <input type="text" id="login"><br>
+            </div>
+            <div class="registration_form">
+                <label>Пароль</label>
+                <input type="text" id="password">
+            </div>
+            <button id="login_but">Войти</button>
+        </div>
+    </div>
+    <script src="/assets/js/headerScript.js"></script>
+</header>
+{{end}}

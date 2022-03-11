@@ -1,0 +1,96 @@
+#registration {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  z-index: 101;
+}
+
+#forma {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 10px;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 15px;
+  border-radius: 10px;
+  background-color: #fff;
+  -webkit-box-shadow: 4px 4px 20px #ccc;
+          box-shadow: 4px 4px 20px #ccc;
+  z-index: 102;
+}
+
+#forma span {
+  font-size: 20px;
+}
+
+#registration_but {
+  background-color: #21499e;
+  color: white;
+  padding: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+#close_window_but {
+  cursor: pointer;
+  position: absolute;
+  margin: 10px;
+  right: 5px;
+  scale: 2;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#close_window_but:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  scale: 2.04;
+}
+
+.user-box {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.user-box input {
+  width: 100%;
+  font-size: 16px;
+  color: black;
+  border: none;
+  border-bottom: 1px solid #21499e;
+  outline: none;
+  background: transparent;
+}
+
+.user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  color: black;
+  pointer-events: none;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #000000;
+  font-size: 12px;
+}
+/*# sourceMappingURL=registrationFormStyle.css.map */

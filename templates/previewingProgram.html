@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Предварительный просмотр программы</title>
+    <link rel="stylesheet" href="/assets/css/passportStyle.css">
+</head>
+
+<body>
+    {{template "header"}} {{template "registration_form"}}
+    <h1 style="margin-left: 15%;">Паспорт программы: {{.Title}}</h1>
+    <form method="post" class="DPO" action="/add_program">
+        <input class="hide" value="{{.Title}}" name="Title">
+        <table class="table">
+            <tr>
+                <td>
+                    Уровень программы
+                </td>
+                <td>
+                    <input class="hide" value="{{.Program_level_id}}" name="Program_level"> {{.Program_level}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Вид программы
+                </td>
+                <td>
+                    <input class="hide" value="{{.Type_program_id}}" name="Type_program"> {{.Type_program}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Направление обучения
+                </td>
+                <td>
+                    <input class="hide" value="{{.Direction_study_id}}" name="Direction_study"> {{.Direction_study}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Форма обучения
+                </td>
+                <td>
+                    <input class="hide" value="{{.Training_form_id}}" name="Training_form"> {{.Training_form}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Объем программы
+                </td>
+                <td>
+                    <input class="hide" value="{{.Size_program}}" name="Size_program"> {{.Size_program}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Длительность программы
+                </td>
+                <td>
+                    <input class="hide" value="{{.Length}}" name="Length"> {{.Length}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Стоимость обучения
+                </td>
+                <td>
+                    <input class="hide" value="{{.Price}}" name="Price"> {{.Price}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Место реализации программы
+                </td>
+                <td>
+                    <input class="hide" value="{{.Place_id}}" name="Place"> {{.Place}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Минимальный размер группы
+                </td>
+                <td>
+                    <input class="hide" value="{{.Minimum_group_size}}" name="Minimum_group_size"> {{.Minimum_group_size}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Начало занятий
+                </td>
+                <td>
+                    <input class="hide" value="{{.Start_date}}" name="Start_date"> {{.Start_date}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Выдаваемый документ
+                </td>
+                <td>
+                    <input class="hide" value="{{.Issued_document_id}}" name="Issued_document"> {{.Issued_document}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Требования к слушателям
+                </td>
+                <td>
+                    <input class="hide" value="{{.Requirements_listeners_id}}" name="Requirements_listeners"> {{.Requirements_listeners}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    О программе
+                </td>
+                <td>
+                    <a href="https://e.mail.ru/cgi-bin/getattach?file=%D0%9F%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD.docx&amp;id=16437178530476238319%3B0%3B1&amp;mode=attachment&amp;notype=1&amp;x-email=gnebedyuka%40list.ru">Учебный план</a>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" id="subscribe_but" value="Подтвердить">
+    </form>
+</body>
+
+</html>

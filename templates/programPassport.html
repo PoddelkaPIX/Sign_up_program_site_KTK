@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="/assets/css/passportStyle.css">
+</head>
+
+<body>
+    {{template "header"}} {{template "registration_form"}}
+    <h1 style="margin-left: 15%;">Паспорт программы: {{.Title}}</h1>
+    <div class="DPO">
+        <table class="table">
+            <tr>
+                <td>
+                    Уровень программы
+                </td>
+                <td>
+                    {{.Program_level}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Вид программы
+                </td>
+                <td>
+                    {{.Type_program}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Направление обучения
+                </td>
+                <td>
+                    {{.Direction_study}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Форма обучения
+                </td>
+                <td>
+                    {{.Training_form}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Объем программы
+                </td>
+                <td>
+                    {{.Size_program}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Длительность программы
+                </td>
+                <td>
+                    {{.Length}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Стоимость обучения
+                </td>
+                <td>
+                    {{.Price}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Место реализации программы
+                </td>
+                <td>
+                    {{.Place}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Минимальный размер группы
+                </td>
+                <td>
+                    {{.Minimum_group_size}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Начало занятий
+                </td>
+                <td>
+                    {{.Start_date}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Выдаваемый документ
+                </td>
+                <td>
+                    {{.Issued_document}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Требования к слушателям
+                </td>
+                <td>
+                    {{.Requirements_listeners}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    О программе
+                </td>
+                <td>
+                    <a href="https://e.mail.ru/cgi-bin/getattach?file=%D0%9F%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD.docx&amp;id=16437178530476238319%3B0%3B1&amp;mode=attachment&amp;notype=1&amp;x-email=gnebedyuka%40list.ru">Учебный план</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <input type="button" id="subscribe_but" onclick="Show_registration_form('{{ .Title }}', '{{ .Id }}')" value="Записаться">
+</body>
+
+</html>

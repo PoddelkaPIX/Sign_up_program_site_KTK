@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Панель управления</title>
+    <link rel="stylesheet" href="/assets/css/controlPanelStyle.css">
+</head>
+
+<body style="padding-top: 80px;">
+    <div id="main_window">
+        {{template "header"}}
+        <div class="wrapper">
+            <input type="radio" name="select" id="control_input" onchange="Switch_view()" checked>
+            <input type="radio" name="select" id="library_input" onchange="Switch_view()">
+            <label for="control_input" id="control_label" class="option">
+                <div class="dot"></div>
+                <span>Управление</span>
+                </label>
+            <label for="library_input" id="library_label" class="option"> 
+                <div class="dot"></div>
+                <span>Архив</span>
+            </label>
+        </div>
+        <hr>
+        <div id="control_panel">
+            <div id="program_list_view">
+                {{range $i := .Programs}}
+                <label class="Title_program_radio">
+                        <input type="radio" id="Title: {{ $i.Id }}" name="title_program" value="{{ $i.Id }}">
+                        <label for="Title: {{ $i.Id }}">
+                            <div>
+                                {{ $i.Title }}
+                            </div>
+                            <span style="margin-left: auto;" class="status_indicator {{$i.Program_status}}"> </span>
+                        </label>
+
+                <div class="listeners_list">
+                    {{range $j := $i.Listeners}}
+                    <label class="Listener">
+                            <input type="checkbox" id="listener_id: {{ $j.Id }}" name="selected_listener" value="{{ $j.Id }}">
+                            <label for="listener_id: {{ $j.Id }}">{{$j.Surname}} {{$j.Name}} {{$j.Patronymic}}</label>
+
+                    <img style="margin-left: auto;" class="{{$j.Listener_status}}" id="img_status_listener: {{$j.Id}}" src="/assets/images/clock.png">
+                    <div class="listener_information">
+                        <div>{{$j.Telephone}}</div>
+                        <div>{{$j.Email}}</div>
+                        <div>{{$j.Education}}</div>
+                        <div>{{$j.Birth_date}}</div>
+                        <div>
+                            <span style="font-size: 10px;">{{$j.Registration_date}}</span>
+                            <input type="button" class="confirm_listener_but" data-id="{{$j.Id}}" value="Подтвердить обучение"></div>
+                    </div>
+                    </label>
+                    {{end}}
+                </div>
+                </label>
+                {{end}}
+                <input type="radio" id="add_program_radio" name="title_program">
+                <input type="button" value="Добавить новую программу +" for="add_program_radio" id="add_program_but" onclick="Create_new_program()">
+            </div>
+            <div id="program_passport_view">
+                {{range $i := .Programs}}
+                <div class="DPO hide" id="{{$i.Id}}">
+                    <div class="head_title">
+                        <h2 class="title_program">{{$i.Title}}</h2>
+                        <label class="status_lable">{{$i.Program_status}}</label>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>
+                                Уровень программы
+                            </td>
+                            <td>
+                                {{$i.Program_level}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Вид программы
+                            </td>
+                            <td>
+                                {{$i.Type_program}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Направление обучения
+                            </td>
+                            <td>
+                                {{$i.Direction_study}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Форма обучения
+                            </td>
+                            <td>
+                                {{$i.Training_form}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Объем программы
+                            </td>
+                            <td>
+                                {{$i.Size_program}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Длительность программы
+                            </td>
+                            <td>
+                                {{$i.Length}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Стоимость обучения
+                            </td>
+                            <td>
+                                {{$i.Price}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Место реализации программы
+                            </td>
+                            <td>
+                                {{$i.Place}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Минимальный размер группы
+                            </td>
+                            <td>
+                                {{$i.Minimum_group_size}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Начало занятий
+                            </td>
+                            <td>
+                                {{$i.Start_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Выдаваемый документ
+                            </td>
+                            <td>
+                                {{$i.Issued_document}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Требования к слушателям
+                            </td>
+                            <td>
+                                {{$i.Requirements_listeners}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                О программе
+                            </td>
+                            <td>
+                                <a href="https://e.mail.ru/cgi-bin/getattach?file=%D0%9F%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD.docx&amp;id=16437178530476238319%3B0%3B1&amp;mode=attachment&amp;notype=1&amp;x-email=gnebedyuka%40list.ru">Учебный план</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="buttons">
+
+                        <input id="start_program_but" type="button" value="Начать программу">
+                        <input id="edit_program_but" type="button" value="Редактировать">
+                        <input id="delete_program_but" type="button" value="Удалить">
+                        <input id="close_program_but" type="button" value="Закончить">
+                    </div>
+                </div>
+                {{end}}
+                <form class="DPO" id="creat_program_form" method="post" action="/previewing_program">
+                    <div id="creat_program_title">
+                        <p>Заголовок:</p>
+                        <input type="text" name="Title" required="" placeholder="Закройщик">
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>
+                                Уровень программы
+                            </td>
+                            <td>
+                                <select name="Program_level">
+                                    {{range $i := .Setting.Program_level_list}}
+                                    <option style="margin-bottom: 20px;" title="{{$i}}" value="{{$i.Program_level_id}};@{{$i.Program_level}}"> {{$i.Program_level}}</option>{{end}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Вид программы
+                            </td>
+                            <td>
+                                <select name="Type_program">
+                                    {{range $i := .Setting.Type_program_list}}
+                                    <option style="margin-bottom: 20px;" title="{{$i}}" value="{{$i.Type_program_id}};@{{$i.Type_program}}"> {{$i.Type_program}}</option>{{end}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Направление обучения
+                            </td>
+                            <td>
+                                <select name="Direction_study">
+                                    {{range $i := .Setting.Direction_study_list}}
+                                    <option style="margin-bottom: 20px;" title="{{$i}}" value="{{$i.Direction_study_id}};@{{$i.Direction_study}}"> {{$i.Direction_study}}</option>{{end}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Форма обучения
+                            </td>
+                            <td>
+                                <select name="Training_form">
+                                    {{range $i := .Setting.Training_form_list}}
+                                    <option style="margin-bottom: 20px;" title="{{$i}}" value="{{$i.Training_form_id}};@{{$i.Training_form}}">{{$i.Training_form}}</option>{{end}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Объем программы
+                            </td>
+                            <td>
+                                <input name="Size_program" type="text" required="" placeholder="432 часа">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Длительность программы
+                            </td>
+                            <td>
+                                <input name="Length" type="text" required="" placeholder="3 месяца">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Стоимость обучения
+                            </td>
+                            <td>
+                                <input name="Price" type="text" required="" placeholder="12345 руб. ">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Место реализации программы
+                            </td>
+                            <td>
+                                <select name="Place">
+                                    {{range $i := .Setting.Place_list}}
+                                    <option style="margin-bottom: 20px;" title="{{$i}}" value="{{$i.Place_id}};@{{$i.Place}}">{{$i.Place}}</option>{{end}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Минимальный размер группы
+                            </td>
+                            <td>
+                                <input name="Minimum_group_size" type="text" required="" placeholder="5 человек ">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Начало занятий
+                            </td>
+                            <td>
+                                <input name="Start_date" type="date" placeholder="По мере набора группы"> НЕ ОБЯЗАТЕЛЬНО </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Выдаваемый документ
+                            </td>
+                            <td>
+                                <select name="Issued_document">
+                                    {{range $i := .Setting.Issued_document_list}}
+                                    <option style="margin-bottom: 20px;" title="{{$i}}" value="{{$i.Issued_document_id}};@{{$i.Issued_document}}">{{$i.Issued_document}}</option>{{end}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Требования к слушателям
+                            </td>
+                            <td>
+                                <select name="Requirements_listeners">
+                                    {{range $i := .Setting.Requirements_listeners_list}}
+                                    <option style="margin-bottom: 20px;" title="{{$i}}" value="{{$i.Requirements_listeners_id}};@{{$i.Requirements_listeners}}">{{$i.Requirements_listeners}}</option>{{end}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                О программе
+                            </td>
+                            <td>
+                                <input type="url" value=""> НЕ ОБЯЗАТЕЛЬНО
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="Готово" id="add_program_but">
+                </form>
+            </div>
+        </div>
+        <div id="archive" class="hide">
+            Пока тут пусто
+            <embed src="/assets/images/test.pdf" width="800px" height="2100px" />
+        </div>
+    </div>
+    <script src="/assets/js/controlPanelScript.js"></script>
+</body>
+
+</html>
